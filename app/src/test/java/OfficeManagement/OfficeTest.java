@@ -10,7 +10,7 @@ public class OfficeTest {
   @Test public void testEmptyArray() {
     Office office = new Office();
     ArrayList<MeetingRoom> emptyarray = new ArrayList<MeetingRoom>();
-    assertEquals("test it returns an empty array at start", office.allRooms(), emptyarray);
+    assertEquals("test it returns an empty array at start", emptyarray, office.allRooms());
   }
 
   @Test public void testAllRooms() {
@@ -20,24 +20,41 @@ public class OfficeTest {
     office.newRoom("Room 1");
     office.newRoom("Room 2");
     office.newRoom("Room 3");
-    assertEquals("test it returns a list of rooms added", office.allRooms().get(0).roomname, "Room 1");
-    assertEquals("test it returns a list of rooms added", office.allRooms().get(1).roomname, "Room 2");
-    assertEquals("test it returns a list of rooms added", office.allRooms().get(2).roomname, "Room 3");
+    assertEquals("test it returns a list of rooms added", "Room 1", office.allRooms().get(0).roomname);
+    assertEquals("test it returns a list of rooms added", "Room 2", office.allRooms().get(1).roomname);
+    assertEquals("test it returns a list of rooms added", "Room 3", office.allRooms().get(2).roomname);
   }
 
   @Test public void testNewRoom() {
     Office office = new Office();
     office.newRoom("Room 1");
-    assertEquals("test it adds a room", office.allrooms.get(0).roomname, "Room 1"); 
+    assertEquals("test it adds a room", "Room 1", office.allrooms.get(0).roomname); 
 
   }
 
-  // @Test public void testAvailable() {
-  //   Office office = new Office();
-  //   office.newRoom("Room 1");
-  //   MeetingRoom meetingroom = office.allRooms().get(0);
-  //   assertEquals("test room returns occupied", .occupied, false);
-  //   meetingroom.occupy();
-  //   assertEquals("test room returns occupied", office.allrooms.get(0).occupied, true); 
-  // }
+  @Test public void testseeAvailable() {
+    Office office1 = new Office();
+    office1.deleteAllRooms();
+    office1.newRoom("Room 1");
+    office1.newRoom("Room 2");
+    office1.newRoom("Room 3");
+    
+    assertEquals("test it returns all unoccupied rooms", 3, office1.seeAvailable().size());
+    assertEquals("check room 1 is the first in the array", "Room 1", office1.seeAvailable().get(0).roomname);
+
+    MeetingRoom meetingroom = office1.allRooms().get(0);
+    meetingroom.enter();
+    System.out.println(office1.seeAvailable());
+    assertEquals("test list has less members", 2, office1.seeAvailable().size());
+    assertEquals("check room 2 is now the first in the array", "Room 2", office1.seeAvailable().get(0).roomname); 
+  }
+
+  @Test public void testDeleteAllRooms() {
+    Office office = new Office();
+    office.newRoom("Room 1");
+    assertEquals("test it returns a list of rooms added", "Room 1", office.allRooms().get(0).roomname);
+    office.deleteAllRooms();
+    assertEquals("test it returns an empty array after delete", 0, office.allRooms().size());
+
+  }
 }
