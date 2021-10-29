@@ -2,7 +2,6 @@ package OfficeManagement;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.ArrayList;
 
 
 public class MeetingRoomTest {
@@ -15,12 +14,15 @@ public class MeetingRoomTest {
 
   }
 
-  // @Test public void testNewRoom() {
-  //   MeetingRoom meetingroom = new MeetingRoom();
-  //   meetingroom.newRoom("Room 1");
-  //   assertEquals("test it adds a room", meetingroom.allrooms.get(0), "Room 1"); 
+  @Test public void testHasStatus() {
+    MeetingRoom meetingroom = new MeetingRoom("Room 1");
+    assertEquals("tests a new room has a false occupied status", meetingroom.occupied, false);
+    
+  }
 
-
-
-  // }
+  @Test public void testOccupy() {
+    MeetingRoom meetingroom = new MeetingRoom("Room 1");
+    meetingroom.occupy();
+    assertEquals("test it changes occupied to true", meetingroom.occupied, true); 
+  }
 }

@@ -4,20 +4,22 @@ import java.util.ArrayList;
 
 
 
+
 public class Office {
 
-ArrayList<String> allrooms;
+ArrayList<MeetingRoom> allrooms;
   
   Office() {
-      allrooms = new ArrayList<String>();
+      allrooms = new ArrayList<MeetingRoom>();
     }
 
-    public ArrayList<String> allRooms() {
+    public ArrayList<MeetingRoom> allRooms() {
       return this.allrooms;
     }
   
     public void newRoom(String name) {
-      allrooms.add(name);
+      MeetingRoom newmeetingroom = new MeetingRoom(name);
+      allrooms.add(newmeetingroom);
     }
 
 }
