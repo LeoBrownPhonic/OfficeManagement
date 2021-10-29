@@ -6,18 +6,11 @@ import java.util.ArrayList;
 
 public class MeetingRoom {
 
-ArrayList<String> allrooms;
+String roomname;
   
-  MeetingRoom() {
-      allrooms = new ArrayList<String>();
+  MeetingRoom(String name) {
+      roomname = name;
     }
 
-    public ArrayList<String> allRooms() {
-      return this.allrooms;
-    }
   
-    public void newRoom(String name) {
-      allrooms.add(name);
-    }
-
 }
