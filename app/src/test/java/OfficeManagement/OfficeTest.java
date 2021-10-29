@@ -32,21 +32,26 @@ public class OfficeTest {
 
   }
 
-  @Test public void testseeAvailable() {
+  @Test public void testseeAvailableRooms() {
     Office office1 = new Office();
     office1.deleteAllRooms();
     office1.newRoom("Room 1");
     office1.newRoom("Room 2");
     office1.newRoom("Room 3");
     
-    assertEquals("test it returns all unoccupied rooms", 3, office1.seeAvailable().size());
-    assertEquals("check room 1 is the first in the array", "Room 1", office1.seeAvailable().get(0).roomname);
-
-    MeetingRoom meetingroom = office1.allRooms().get(0);
-    meetingroom.enter();
-    System.out.println(office1.seeAvailable());
-    assertEquals("test list has less members", 2, office1.seeAvailable().size());
-    assertEquals("check room 2 is now the first in the array", "Room 2", office1.seeAvailable().get(0).roomname); 
+    assertEquals("test it returns all unoccupied rooms", 3, office1.seeAvailableRooms().size());
+    assertEquals("check room 1 is the first in the array", "Room 1", office1.seeAvailableRooms().get(0).roomname);
+    office1.deleteAllAvailableRooms();
+    System.out.println(office1.allRooms());
+    office1.allRooms().get(0).enter();
+    System.out.println(office1.allRooms().get(0).roomname);
+    System.out.println(office1.allRooms().get(0).occupied);
+    System.out.println(office1.seeAvailableRooms());
+    office1.deleteAllAvailableRooms();
+    assertEquals("test it returns all unoccupied rooms", 2, office1.seeAvailableRooms().size());
+    office1.deleteAllAvailableRooms();
+    assertEquals("check room 2 is now the first in the array", "Room 2", office1.seeAvailableRooms().get(0).roomname);
+    
   }
 
   @Test public void testDeleteAllRooms() {
