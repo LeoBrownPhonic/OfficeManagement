@@ -9,18 +9,18 @@ public class MeetingRoomTest {
 
 
   
-  @Test public void testAllRooms() {
-    MeetingRoom meetingroom = new MeetingRoom();
-    ArrayList<String> emptyarray = new ArrayList<String>();
-    assertEquals("test it returns an empty array at start", meetingroom.allRooms(), emptyarray);
-  }
-
-  @Test public void testNewRoom() {
-    MeetingRoom meetingroom = new MeetingRoom();
-    meetingroom.newRoom("Room 1");
-    assertEquals("test it adds a room", meetingroom.allrooms.get(0), "Room 1"); 
-
-
+  @Test public void testNew() {
+    MeetingRoom meetingroom = new MeetingRoom("Room 1");
+    assertEquals("tests a new room is created with a name", meetingroom.roomname, "Room 1");
 
   }
+
+  // @Test public void testNewRoom() {
+  //   MeetingRoom meetingroom = new MeetingRoom();
+  //   meetingroom.newRoom("Room 1");
+  //   assertEquals("test it adds a room", meetingroom.allrooms.get(0), "Room 1"); 
+
+
+
+  // }
 }
