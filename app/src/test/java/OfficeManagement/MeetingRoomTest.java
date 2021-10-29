@@ -32,4 +32,12 @@ public class MeetingRoomTest {
     meetingroom.enter();
     assertEquals("test it changes occupied to true", meetingroom.available(), true); 
   }
+
+  @Test public void testLeave() {
+    MeetingRoom meetingroom = new MeetingRoom("Room 1");
+    meetingroom.enter();
+    assertEquals("test it changes occupied to true first", meetingroom.occupied, true); 
+    meetingroom.leave();
+    assertEquals("test it changes occupied back to false", meetingroom.occupied, false);
+  }
 }
