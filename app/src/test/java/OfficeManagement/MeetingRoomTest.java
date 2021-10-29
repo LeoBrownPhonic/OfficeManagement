@@ -20,9 +20,16 @@ public class MeetingRoomTest {
     
   }
 
-  @Test public void testOccupy() {
+  @Test public void testEnter() {
     MeetingRoom meetingroom = new MeetingRoom("Room 1");
-    meetingroom.occupy();
+    meetingroom.enter();
     assertEquals("test it changes occupied to true", meetingroom.occupied, true); 
+  }
+
+  @Test public void testAvailable() {
+    MeetingRoom meetingroom = new MeetingRoom("Room 1");
+    assertEquals("test it returns false when unoccupied", meetingroom.available(), false); 
+    meetingroom.enter();
+    assertEquals("test it changes occupied to true", meetingroom.available(), true); 
   }
 }

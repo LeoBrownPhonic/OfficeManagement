@@ -14,8 +14,12 @@ Boolean occupied;
       occupied = false;
     }
 
-  public void occupy() {
+  public void enter() {
     occupied = true;
+  }
+
+  public Boolean available() {
+    return occupied;
   }
   
 }

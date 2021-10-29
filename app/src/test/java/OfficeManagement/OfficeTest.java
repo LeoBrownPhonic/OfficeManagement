@@ -31,4 +31,13 @@ public class OfficeTest {
     assertEquals("test it adds a room", office.allrooms.get(0).roomname, "Room 1"); 
 
   }
+
+  // @Test public void testAvailable() {
+  //   Office office = new Office();
+  //   office.newRoom("Room 1");
+  //   MeetingRoom meetingroom = office.allRooms().get(0);
+  //   assertEquals("test room returns occupied", .occupied, false);
+  //   meetingroom.occupy();
+  //   assertEquals("test room returns occupied", office.allrooms.get(0).occupied, true); 
+  // }
 }
